@@ -1,0 +1,79 @@
+<div class="hClinicas">
+  <div class="$ gris-600 text-center">
+    <h1 class="display-4">HISTORIAS CLINICAS</h1>
+  </div>
+  <div class="container my-5">
+    <div class="col-sm-12">
+      <h1 class="display-6 py-3">Buqueda de Records</h1>
+      <div class="card">
+          <div class="card-body p-4">
+            <form #medicalRecord="ngForm" (ngSubmit)="getInfoMedicalR(medicalRecord)" class="row py-2">
+              <div class="row">
+                <h6 class="card-subtitle mb-2 text-muted">Nro de historia clinica:</h6>
+                <div class="form-group col-sm-6 mb-2">
+                  <input type="string" name="dni" class="form-control" placeholder="8 dígitos" maxlength="8"
+                  [(ngModel)]="patientServices.patientRecord.dni" required>
+                </div>
+                <div class="form-group col-sm-2 mb-2">
+                  <button type="submit" class="btn btn-primary">Buscar</button>
+                </div>
+                <div class="form-group col-auto mb-2 ">
+                  <button type="submit" class="btn btn-primary" (click)="newSearch(medicalRecord)">Nueva busqueda</button>
+                </div>
+              </div>
+            </form>
+              <div class="row">
+                <div class="input-group col-sm-6 mb-2">
+                  <span class="input-group-text">Nombre y apellidos:</span>
+                  <input type="text" name="name"  class="form-control" value={{nombreCompletoR}} disabled>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-group col mb-2">
+                  <span class="input-group-text">DNI:</span>
+                  <input type="text" name="dni"  class="form-control" value={{patientRecord.dni}} disabled>  
+                </div>
+                <div class="input-group col mb-2">
+                  <span class="input-group-text">Email:</span>
+                  <input type="text" name="email"  class="form-control" value={{patientRecord.email}} disabled>  
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-group col mb-2">
+                  <span class="input-group-text">Tipo de sangre:</span>
+                  <input type="text" name="blood_type" class="form-control" value={{blood_type}} disabled>  
+                </div>
+                <div class="input-group col mb-2">
+                  <span class="input-group-text">Donador de organos:</span>
+                  <input type="text"  name="organ_donor" class="form-control" value={{organ_donor}} disabled>  
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-group col">
+                  <span class="input-group-text">Historia Medica Familiar:</span>
+                  <textarea type="text" name="familyMedicalHistory" class="form-control" rows="5" value={{familyMedicalHistory}} disabled></textarea>
+                </div>
+              </div>
+            
+              <table class="table" *ngIf="booleanTable">
+                <thead>
+                  <tr>
+                    <th scope="col">DNI Medico</th>
+                    <th scope="col">Diagnostico</th>
+                    <th scope="col">Preescripcion</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of tableRecord">
+                    <td>{{data.dni_medic}}</td>
+                    <td>{{data.diagnosis}}</td>
+                    <td>{{data.prescriptions}}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

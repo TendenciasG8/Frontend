@@ -1,0 +1,85 @@
+<div class="medicine">
+  <div class="$ gris-600 text-center">
+    <h1 class="display-4">GESTION DE NUEVA HISTORIA CLINICA </h1>
+  </div>
+  <div class="container my-5">
+    <div class="col-sm-12">
+      <h1 class="display-6 py-3">Registro de Historia Clinica</h1>
+      <div class="card">
+        <div class="card-body p-4">
+          <form #medicineForm="ngForm"  (ngSubmit)="getPatientForMedicine(medicineForm)" class="row py-2">
+            <div class="row">
+              <h6 class="card-subtitle mb-2 text-muted">Nro de historia clinica:</h6>
+              <div class="form-group col-sm-6 mb-2">
+                <input type="string" name="dni" class="form-control" placeholder="8 dígitos" maxlength="8"
+                  [(ngModel)]="patientServices.patientMedicine.dni" required>
+              </div>
+              <div class="form-group col-sm-2 mb-2">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+              </div>
+              <div class="input-group col-sm-6 mb-2">
+                <span class="input-group-text">Nombre y apellidos:</span>
+                <input type="text" name="name" class="form-control" value={{nombreCompletoM}} disabled>
+              </div>
+            </div>
+          </form>
+          <div class="row ">
+            <div class="col-6">
+              <h6 class=" card-subtitle mb-2 text-muted">Tipo de Sangre:</h6>
+              <input type="text" name="blood_type" class="form-control" [(ngModel)]="medicalRecordRegister.blood_type">
+            </div>
+            <div class="col-6">
+              <h6 class="card-subtitle mb-2 text-muted">Donador de Organos:</h6>
+              <select class="form-select" style="font-size:1rem" [(ngModel)]="organDonorSelected"
+                (change)="onChangeOrganDonor()">
+                <option selected value="true">Sí</option>
+                <option value="false">No</option>
+              </select>
+            </div>
+          </div>
+          <form #RegisterMedicalRecord="ngForm" (ngSubmit)="registerMedicalRecord(RegisterMedicalRecord)"
+            class="row py-2">
+            <div class="row">
+              <div class="col-12 my-4">
+                <h6 class="card-subtitle mb-2 text-muted">Historia Medica Familiar</h6>
+                <textarea class="form-control" name="family_medical_history" id="" rows="3"
+                  [(ngModel)]="medicalRecordRegister.family_medical_history"></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <div style="text-align:center">
+                <button type="submit" class="btn btn-primary" style="margin: 1rem;">Registrar Historia Clinica</button>
+              </div>
+            </div>
+          </form>
+          <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+            </symbol>
+            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+              <path
+                d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+            </symbol>
+          </svg>
+          <div *ngIf="booleanAlertCorrect" (click)="closeAlert()"
+            class="alert alert-success w-95 alert-dismissible fade show" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+              <use xlink:href="#check-circle-fill" />
+            </svg>
+            <strong>La historia clinica se ha registrado correctamente!.</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          <div *ngIf="booleanAlertIncorrect" (click)="closeAlert()"
+            class="alert alert-danger w-95 alert-dismissible fade show" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+              <use xlink:href="#exclamation-triangle-fill" />
+            </svg>
+            La historia clinica <strong> NO SE HA PODIDO REGISTRAR</strong> Intentelo de nuevo!.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<h1 mat-dialog-title></h1>
+<div mat-dialog-content>
+    <span>El paciente: </span> {{data.patient}}
+    <br>
+    <span *ngIf="data.razon === 'Registro'">ha sido registrado exitosamente...</span>
+    <span *ngIf="data.razon === 'Actualizacion'">ha sido actualizado exitosamente...</span>
+    <span *ngIf="data.razon === 'Eliminacion'">ha sido eliminado exitosamente</span>
+    <span *ngIf="data.razon === 'NoSeEncuentra'">No esta registrado en el sistema...!</span>
+
+</div>
+<br>
+<div mat-dialog-actions>
+  <button class="btn btn-primary" mat-dialog-close color="primary">Aceptar</button>
+</div>

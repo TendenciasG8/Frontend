@@ -1,0 +1,108 @@
+<div class="user-detail" fxLayout="column">
+    <div class="mat-card-title" fxLayoutAlign="center center">
+        <mat-card class="mat-elevation-z0" fxFlex="70%">
+            <span>Mi Informacion</span>
+        </mat-card>
+    </div>
+    <div class="mat-card-content" fxLayout="row wrap" fxLayoutAlign="center center">
+        <mat-card class="mat-elevation-z0" fxFlex="70%" fxFlex.xs="100%">
+            <mat-card-title>
+                <span>Mi Perfil</span>
+            </mat-card-title>
+            <mat-card-content class="my-4" fxLayout="column" fxLayoutAlign="space-around none">
+                <div class="row" fxLayout="row" fxLayoutAlign="center center" fxFlex="50%">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">
+                        <span class="material-icons">person</span>
+                        <mat-label class="boldFont">Nombre:</mat-label>
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-label>{{name}}</mat-label>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center" fxFlex="50%">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">
+                        <span class="material-icons">fingerprint</span>
+                        <mat-label class="boldFont">Apellidos: </mat-label>
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-label>{{lastname}}</mat-label>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center" fxFlex="50%">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">
+                        <span class="material-icons">wc</span>
+                        <mat-label class="boldFont">Género: </mat-label>
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-label>{{gender}}</mat-label>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center" fxFlex="50%">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">
+                        <span class="material-icons">wysiwyg</span>
+                        <mat-label class="boldFont">DNI: </mat-label>
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-label>{{dni}}</mat-label>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center" fxFlex="50%">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">
+                        <span class="material-icons">date_range</span>
+                        <mat-label class="boldFont">Fecha de Nacimiento: </mat-label>
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-label>{{birthdate}}</mat-label>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center" fxFlex="50%">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">
+                        <span class="material-icons">mail_outline</span>
+                        <mat-label class="boldFont">E-mail: </mat-label>
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-label>{{ email}}</mat-label>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center" fxFlex="50%">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">
+                        <span class="material-icons">call</span>
+                        <mat-label class="boldFont">Telefono: </mat-label>
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-label>{{phone}}</mat-label>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center" fxFlex="50%">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">
+                        <span class="material-icons">gavel</span>
+                        <mat-label class="boldFont">Estado Civil: </mat-label>
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-label>{{civil_status}} </mat-label>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center" fxFlex="50%">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">
+                        <span class="material-icons">location_on</span>
+                        <mat-label class="boldFont">Direccion: </mat-label>
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-label>{{address}}</mat-label>
+                    </div>
+                </div>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+</div>

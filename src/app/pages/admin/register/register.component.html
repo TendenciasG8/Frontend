@@ -1,0 +1,120 @@
+<div class="register-component" fxLayout="column">
+    <div *ngIf="alertSuccess" (click)="alertClose()" class="alert alert-success alert-dismissible fade show" role="alert">
+        El usuario <strong>{{usernameUser}}</strong> se ha registrado correctamente!.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div *ngIf="alertDanger" (click)="alertClose()" class="alert alert-danger  alert-dismissible fade show" role="alert">
+        <strong>No se ha podido realizar el registro</strong> Intentelo nuevamente!.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div class="$ gris-600 text-center">
+        <h1 class="display-4">REGISTRO DE USUARIOS</h1>
+      </div>
+    <div class="mat-card-content my-5" fxLayout="row wrap" fxLayoutAlign="center center">
+        <form #userRegisterForm="ngForm" (ngSubmit)="addUser(userRegisterForm)" fxFlex="80%" fxFlex.xs="100%">
+            <mat-card class="mat-elevation-z12">
+                <mat-card-title>
+                    <span>Ingrese sus datos:</span>
+                </mat-card-title>
+                <mat-card-content>
+                    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
+                        <mat-form-field appearance="outline" fxFlex="70%">
+                            <mat-label>Nombre Completo</mat-label>
+                            <input matInput name="name" class="form-control" placeholder="Just a placeholder" required
+                                type="text" [(ngModel)]="userServices.userRegisterAdmin.name">
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
+                        <mat-form-field appearance="outline" fxFlex="70%">
+                            <mat-label>Apellido Paterno</mat-label>
+                            <input matInput name="lastname_p" class="form-control" required type="text"
+                                [(ngModel)]="userServices.userRegisterAdmin.lastname_p">
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
+                        <mat-form-field appearance="outline" fxFlex="70%">
+                            <mat-label>Apellido Materno</mat-label>
+                            <input matInput name="lastname_m" class="form-control" required type="text"
+                                [(ngModel)]="userServices.userRegisterAdmin.lastname_m">
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
+                        <mat-form-field appearance="outline" fxFlex="70%" class="py-0">
+                            <mat-label>e-mail</mat-label>
+                            <input matInput name="email" class="form-control bg-white" required
+                                placeholder="Ej.usuario@mail.com" type="text"
+                                [(ngModel)]="userServices.userRegisterAdmin.email" disabled value={{emailUser}}>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
+                        <mat-form-field appearance="outline" fxFlex="70%" class="py-0">
+                            <mat-label>Username</mat-label>
+                            <input matInput name="username" class="form-control bg-white" required
+                                placeholder="Ej.usuario@mail.com" type="text"
+                                [(ngModel)]="userServices.userRegisterAdmin.username" disabled value={{usernameUser}}>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
+                        <mat-form-field appearance="outline" fxFlex="70%" class="py-0">
+                            <mat-label>Genero</mat-label>
+                            <input matInput name="gender" class="form-control bg-white" required
+                                placeholder="Masculino/Femenino" type="text"
+                                [(ngModel)]="userServices.userRegisterAdmin.gender">
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
+                        <mat-form-field appearance="outline" fxFlex="70%">
+                            <mat-label>DNI</mat-label>
+                            <input matInput name="dni" class="form-control" maxlength="8" required type="number"
+                                [(ngModel)]="userServices.userRegisterAdmin.dni">
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
+                        <mat-form-field appearance="outline" fxFlex="70%">
+                            <mat-label>Fecha de Nacimiento</mat-label>
+                            <input matInput name="birthday" class="form-control " required placeholder="dd/mm/aaaa"
+                                type="date" [(ngModel)]="userServices.userRegisterAdmin.birthday">
+                        </mat-form-field>
+                    </div>
+
+                    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
+                        <mat-form-field appearance="outline" fxFlex="70%">
+                            <mat-label>Telefono</mat-label>
+                            <input matInput name="phone" class="form-control" required placeholder="999999999"
+                                type="number" maxlength="9" [(ngModel)]="userServices.userRegisterAdmin.phone">
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
+                        <mat-form-field appearance="outline" fxFlex="70%">
+                            <mat-label>Rol:</mat-label>
+                            <mat-select name="role" [(value)]="roleSelected" (selectionChange)="onChangeRole()">
+                                <mat-option>Seleccione</mat-option>
+                                <mat-option *ngFor="let rol of roleServices.roleUser" value={{rol._id}}>
+                                    {{rol.role_name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div *ngIf="roleSelected=='60dbbb5283b24752ac7025b8'" fxLayout="row" fxLayout.xs="column"
+                        fxLayoutAlign="center center">
+                        <mat-form-field appearance="outline" fxFlex="70%">
+                            <mat-label>Especialidad:</mat-label>
+                            <mat-select name="specialty" [(value)]="specialtySelected"
+                                (selectionChange)="onChangeSpecialty()">
+                                <mat-option>Seleccione</mat-option>
+                                <mat-option *ngFor="let spec of specialtyServices.specRegisterUser" value={{spec._id}}>
+                                    {{spec.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="button" fxLayoutAlign="center center">
+                        <button type="submit" color=primary mat-raised-button fxFlex="30%">
+                            Registrar Usuario
+                        </button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </div>
+</div>

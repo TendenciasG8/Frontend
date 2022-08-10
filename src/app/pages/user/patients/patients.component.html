@@ -1,0 +1,180 @@
+<div class="patients">
+  <div class="$ gris-600 text-center">
+    <h1 class="display-4">ASEGURADOS</h1>
+  </div>
+  <br>
+  <div class="container">
+    <div class="accordion" id="accordionExample">
+      <!--REGISTRAR NUEVO ASEGURADO-->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+            aria-expanded="true" aria-controls="collapseOne">
+            Registrar Nuevo Asegurado
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body m-3">
+            <form #patientsForm="ngForm" (ngSubmit)="addPatients(patientsForm)">
+              <div class="row m-2">
+                <div class="form-group col-sm-4 p-2">
+                  <h6 class="card-subtitle mb-2 text-muted">Nombres</h6>
+                  <input type="text" name="name" class="form-control" placeholder="Ingrese nombre"
+                    [(ngModel)]="patientsServices.patientSelected.name">
+                </div>
+                <div class="form-group col-sm-4 p-2">
+                  <h6 class="card-subtitle mb-2 text-muted">Apellido Paterno</h6>
+                  <input type="text" name="lastname_p" class="form-control" placeholder="Ingrese apellido paterno"
+                    [(ngModel)]="patientsServices.patientSelected.lastname_p">
+                </div>
+                <div class="form-group col-sm-4 p-2">
+                  <h6 class="card-subtitle mb-2 text-muted">Apellido Materno</h6>
+                  <input type="text" name="lastname_m" class="form-control" placeholder="Ingrese apellido materno"
+                    [(ngModel)]="patientsServices.patientSelected.lastname_m">
+                </div>
+              </div>
+              <div class="row m-2">
+                <div class="form-group col-sm-4 p-2">
+                  <h6 class="card-subtitle mb-2 text-muted">DNI</h6>
+                  <input type="number" name="dni" class="form-control" placeholder="Ingrese numero de DNI" maxlength="8"
+                    [(ngModel)]="patientsServices.patientSelected.dni">
+                </div>
+                <div class="form-group col-sm-4 p-2">
+                  <h6 class="card-subtitle mb-2 text-muted">Ubigeo</h6>
+                  <input type="text" name="ubigeo" class="form-control" placeholder="Ingrese numero de ubigeo"
+                    maxlength="5" [(ngModel)]="patientsServices.patientSelected.ubigeo">
+                </div>
+                <div class="form-group col-sm-4 p-2">
+                  <h6 class="card-subtitle mb-2 text-muted">Fecha de Nacimiento</h6>
+                  <input class="form-control" name="birthday" id="date-input" type="date" placeholder="dd/mm/aaaa"
+                    style="font-size:1rem" [(ngModel)]="patientsServices.patientSelected.birthday">
+                </div>
+              </div>
+              <div class="row m-2">
+                <div class="form-group col-sm-4 p-2">
+                  <h6 class="card-subtitle mb-2 text-muted">Sexo</h6>
+                  <select id="sexo" name="gender" class="form-select form-control-mb" style="font-size:1rem"
+                    [(ngModel)]="patientsServices.patientSelected.gender">
+                    <option selected disabled value="">Seleccione</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                  </select>
+                </div>
+                <div class="form-group col-sm-4 p-2">
+                  <h6 class="card-subtitle mb-2 text-muted">Celular</h6>
+                  <input type="number" name="phone" class="form-control" placeholder="Ingrese numero de celular"
+                    maxlength="9" [(ngModel)]="patientsServices.patientSelected.phone">
+                </div>
+                <div class="form-group col-sm-4 p-2">
+                  <h6 class="card-subtitle mb-2 text-muted">Correo Electrónico</h6>
+                  <input type="text" name="email" class="form-control" placeholder="Ej. usuario@mail.com"
+                    [(ngModel)]="patientsServices.patientSelected.email">
+                </div>
+              </div>
+              <div class="row">
+                <div style="text-align:center">
+                  <button type="submit" class="btn btn-primary" style="margin: 1rem;">Registrar Nuevo Asegurado</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!--BUSCAR ASEGURADO-->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Buscar Asegurado
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body m-3">
+
+            <div class="row mx-2">
+              <!--BUSQUEDA DE PACIENTE-->
+              <form #patientsDniForm="ngForm" (ngSubmit)="getPatientsByDni(patientsDniForm)" class="my-3">
+                <div class="row">
+                  <h6 class="card-subtitle mb-2 text-muted">DNI del Paciente Asegurado</h6>
+                </div>
+                <div class="form-group col-sm-4 mb-2">
+                  <input type="string" name="dniPatient" class="form-control" placeholder="Ingrese numero de DNI"
+                    [(ngModel)]="patientsServices.patientsDni.dni" maxlength="8" required>
+                </div>
+                <div class="form-group col-sm-2 mb-2 ">
+                  <button type="submit" class="btn btn-primary">Buscar</button>
+                </div>
+              </form>
+            </div>
+            <!--FORMULARIO PARA EDITAR Y ELIMINAR-->
+            <form #patientsEditDeleteForm="ngForm">
+              <div class="row m-2">
+                <div class="form-group col-sm-4 mb-2">
+                  <h6 class="card-subtitle mb-2 text-muted">Nombres</h6>
+                  <input type="text" name="name" class="form-control" placeholder="Ingrese nombres"
+                  [(ngModel)]="patientDni.name">
+                </div>
+                <div class="form-group col-sm-4 mb-2">
+                  <h6 class="card-subtitle mb-2 text-muted">Apellido Paterno</h6>
+                  <input type="text" name="lastname_p" class="form-control" placeholder="Ingrese apellido paterno"
+                    [(ngModel)]="patientDni.lastname_p">
+                </div>
+                <div class="form-group col-sm-4 mb-2">
+                  <h6 class="card-subtitle mb-2 text-muted">Apellido Materno</h6>
+                  <input type="text" name="lastname_m" class="form-control" placeholder="Ingrese apellido materno"
+                  [(ngModel)]="patientDni.lastname_m">
+                </div>
+              </div>
+              <div class="row m-2">
+                <div class="form-group col-sm-4 mb-2">
+                  <h6 class="card-subtitle mb-2 text-muted">DNI</h6>
+                  <input type="text" name="dni" class="form-control" placeholder="Ingrese número de DNI"
+                  [(ngModel)]="patientDni.dni">
+                </div>
+                <div class="form-group col-sm-4 mb-2">
+                  <h6 class="card-subtitle mb-2 text-muted">Ubigeo</h6>
+                  <input type="text" name="ubigeo" class="form-control" placeholder="Ingrese número de ubigeo"
+                  [(ngModel)]="patientDni.ubigeo">
+                </div>
+                <div class="form-group col-sm-4 mb-2">
+                  <h6 class="card-subtitle mb-2 text-muted">Fecha de Nacimiento</h6>
+                  <input name="birthday" class="form-control" id="date-input" type="string"
+                    placeholder="Ingrese fecha de nacimiento" [ngModel]='birthday | date:"yyyy-MM-dd"'
+                    style="font-size:1rem" [(ngModel)]="patientDni.birthday">
+                </div>
+              </div>
+              <div class="row m-2">
+                <div class="form-group col-sm-4 mb-2">
+                  <h6 class="card-subtitle mb-2 text-muted">Sexo</h6>
+                  <input type="text" name="gender" class="form-control" placeholder="Masculino / Femenino"
+                  [(ngModel)]="patientDni.gender">
+                </div>
+                <div class="form-group col-sm-4 mb-2">
+                  <h6 class="card-subtitle mb-2 text-muted">Celular</h6>
+                  <input type="text" name="phone" class="form-control" placeholder="Ingrese número de celular"
+                  [(ngModel)]="patientDni.phone">
+                </div>
+                <div class="form-group col-sm-4 mb-2">
+                  <h6 class="card-subtitle mb-2 text-muted">Correo Electrónico</h6>
+                  <input type="text" name="email" class="form-control" placeholder="Ingrese correo electrónico"
+                  [(ngModel)]="patientDni.email">
+                </div>
+              </div>
+            </form>
+            <div class="row">
+              <div class="form-group col-sm-12 mb-2">
+                <div style="text-align:center">
+                  <button type="button" class="btn btn-success" style="margin: 1rem;" (click)="updatePatient(patientsEditDeleteForm)">Actualizar Datos</button>
+                  <button type="button" class="btn btn-danger" style="margin: 1rem;" (click)="deletePatient(patientsEditDeleteForm)">Eliminar
+                    Paciente</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
