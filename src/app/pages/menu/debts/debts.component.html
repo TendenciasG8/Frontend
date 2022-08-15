@@ -1,0 +1,22 @@
+<div class="py-4">
+    <p class="text-center fw-bold fs-5 py-3">LISTA DE PAGOS</p>
+
+    <table class="table mx-auto">
+        <thead>
+          <tr>
+            <th scope="col">Nro</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">amount</th>
+            <th scope="col">Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of tableDebts">
+            <td>{{data.n_order}}</td>
+            <td>{{data.description}}</td>
+            <td>{{data.amount}}</td>
+            <td>{{data.date_of_debt|date:'shortDate'}}</td>
+          </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,61 @@
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid"> 
+            <a class="navbar-brand"style="color: #0063AE;">
+            <img src="assets/sunat.png" alt="" width="40" height="40" class="d-inline-block align-text-top">  
+            Cuenta Unica
+            </a>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0063AE; height: 50px;">
+        <div class="container-fluid">
+        </div>
+    </nav>
+</div>
+<div class="mx-2 py-5">
+    <mat-card class="w-75 border border-primary mx-auto" > 
+        <mat-card-title style="color:#0063AE ;">
+            SUNAT Operaciones en Linea
+        </mat-card-title>
+        <mat-card-content>
+            <mat-tab-group>
+                <mat-tab label="Empresa" class="px-3">
+                    <form #formLoginEmpresa="ngForm" (ngSubmit)="loginBusiness(formLoginEmpresa)">
+                        <div class="row w-75 mx-auto py-4">
+                            <div class="form-group col-sm-12 py-2">
+                                <h4 class="card-subtitle m-0">RUC:</h4>
+                                <input type="text" class="form-control" name="ruc" required placeholder="Ingrese RUC"
+                                [(ngModel)]="authServices.userBusiness.ruc">
+                            </div>
+                            <div class="form-group col-sm-12 py-2">
+                                <h4 class="card-subtitle m-0">Contraseña:</h4>
+                                <input type="password" class="form-control" name="password" required placeholder="Ingrese contraseña" [(ngModel)]="authServices.userBusiness.password">
+                            </div>
+                            <div class="my-2" style="text-align:center">
+                                <button type="submit" class="btn btn-primary">Ingresar</button>
+                            </div>
+                        </div>
+                    </form>
+                </mat-tab>
+                <mat-tab label="Persona Natural">
+                    <form #formLoginUser="ngForm" (ngSubmit)="loginUser(formLoginUser)">
+                        <div class="row w-75 mx-auto py-4">
+                            <div class="form-group col-sm-12 py-2">
+                                <h4 class="card-subtitle m-0">DNI:</h4>
+                                <input type="text" class="form-control" name="dni" required placeholder="Ingrese DNI" [(ngModel)]="authServices.userlogin.dni">
+                            </div>
+                            <div class="form-group col-sm-12 py-2">
+                                <h4 class="card-subtitle m-0">Contraseña:</h4>
+                                <input type="password" class="form-control" name="password" required placeholder="Ingrese contraseña" [(ngModel)]="authServices.userlogin.password">
+                            </div>
+                            <div class="my-2"  style="text-align:center">
+                                <button type="submit" class="btn btn-primary">Ingresar</button>
+                            </div>
+                        </div>
+                    </form>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-card-content>
+
+    </mat-card>
+</div>

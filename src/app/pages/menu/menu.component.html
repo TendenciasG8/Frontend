@@ -1,0 +1,137 @@
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" style="color: #0063AE;">
+                <img src="assets/sunat.png" alt="" width="40" height="40" class="d-inline-block align-text-top">
+                <p class="d-inline align-self-center">Cuenta Unica</p>
+            </a>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #0063AE; height: 50px;">
+        <div class="container-fluid d-flex flex-row-reverse">
+            <ul class="nav justify-content-end">
+                <li class="nav-item d-flex align-items-center" style="color:white ;">
+                    <p class="fw-bold my-0 pe-2">RUC:</p> {{authServices.userBusiness.ruc}}
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-danger" (click)="logOut()">Salir</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<!--SIDENAV-->
+<div>
+    <ng-container>
+        <mat-sidenav-container >
+            <mat-sidenav class="" #sidenav mode="side" opened disableClose [fixedInViewport]="true"
+                [fixedTopGap]="127.19" class="mat-elevation-z0"  >
+                <mat-nav-list class="" style="width:274px ;">
+                    <p class="text-center py-2 fs-6" style="color:#0063AE ;"> MIS DECLARACIONES Y PAGOS</p>
+                    <div class="row">
+                        <button class="btn btn-secondary rounded-0 text-start fw-bold" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+                        </svg>
+                        Presentacion y Pago
+                        </button>
+                        <div class="collapse btn-group-vertical w-100 pr-2" id="collapseExample">
+                            <!--btn Boletas-->
+                            <button type="button" class="btn btn-secondary rounded-0 border-0 text-start" data-bs-toggle="collapse"
+                                data-bs-target="#btnBoletasdePago" aria-expanded="false" aria-controls="btnBoletasdePago">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+                                </svg>
+                                Boletas de pago
+                            </button>
+                                    <div class="collapse btn-group-vertical w-100 " id="btnBoletasdePago">
+                                        <button type="button" class="btn btn-secondary rounded-0 border-0 text-start" style="color:#0063AE" (click)="payTributes()" >
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+                                            </svg>
+                                              Pago de Tributos
+                                        </button>
+                                        <button type="button" class="btn btn-secondary rounded-0 border-0 text-start" style="color:#0063AE">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+                                            </svg>
+                                            Pago de Multas
+                                        </button>
+                                        <button type="button" class="btn btn-secondary rounded-0 border-0 text-start" style="color:#0063AE">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+                                            </svg>
+                                            Pago de Valores
+                                        </button>
+                                        <button type="button" class="btn btn-secondary rounded-0 border-0 text-start" style="color:#0063AE">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+                                            </svg>
+                                            Pago de Fraccionamiento
+                                        </button>
+                                    </div>
+                            <!--FIN btn Boletas-->
+
+                            <button type="button" class="btn btn-secondary rounded-0 border-0 text-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+                                </svg>
+                                Pago de Aduanas
+                            </button>
+
+                            <button type="button" class="btn btn-secondary rounded-0 border-0 text-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+                                </svg>
+                                Declaraciones anuales
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <button class="btn btn-secondary rounded-0 text-start fw-bold" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+                            </svg>
+                            Consultas
+                        </button>
+
+                        <div class="collapse btn-group-vertical " id="collapse2">
+                            <button type="button" class="btn btn-secondary rounded-0 border-0 text-start" style="color:#0063AE;" (click)="deudas()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+                                </svg>
+                                Consulta de Pagos
+                            </button>
+                            <button type="button" class="btn btn-secondary rounded-0 border-0 text-start" style="color:#0063AE;"  (click)="deudasBancos()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+                                </svg>
+                                Consulta de Deudas
+                            </button>
+                            <button type="button" class="btn btn-secondary rounded-0 border-0 text-start" style="color:#0063AE;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+                                </svg>Consulta de NPD
+                            </button>
+                            <button type="button" class="btn btn-secondary rounded-0 border-0 text-start" style="color:#0063AE;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+                                </svg>Consulta de Pago de Detracciones
+                            </button>
+                        </div>
+                    </div>
+                    
+                </mat-nav-list>
+            </mat-sidenav>
+            <mat-sidenav-content>
+                <!---->
+                <router-outlet></router-outlet>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+    </ng-container>
+</div>
